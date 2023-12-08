@@ -34,14 +34,16 @@ module.exports.createPost = async (req, res) => {
     fileName = req.body.posterId + Date.now() + ".jpg";
   }
 
-  const newPost = new postModel({
-    posterId: req.body.posterId,
-    message: req.body.message,
-    picture: req.file !== null ? "./uploads/posts/" + fileName : "",
-    video: req.body.video,
-    likers: [],
-    comments: [],
-  });
+  const newPost = new postModel(
+    {
+      posterId: req.body.posterId,
+      message: req.body.message,
+      picture: req.file !== null ? "./uploads/posts/" + fileName : "",
+      video: req.body.video,
+      likers: [],
+      comments: [],
+    }
+  );
 
   try {
     const post = await newPost.save();
