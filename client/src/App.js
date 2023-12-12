@@ -1,5 +1,5 @@
 import React from "react";
-// import Routes from "./components/Routes";
+import Routes from "./components/Routes";
 // import { UidContext } from "./components/AppContext";
 // import axios from "axios";
 // import { useDispatch } from "react-redux";
@@ -28,10 +28,9 @@ const App = () => {
 
   return (
     // <UidContext.Provider value={uid}>
-    //   <Routes />
     // </UidContext.Provider>
     <div>
-      Hello world JS
+      <Routes />
     </div>
   )
 }
