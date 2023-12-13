@@ -15,9 +15,11 @@ const Logout = () => {
       url: `${process.env.REACT_APP_API_URL}api/user/logout`,
       withCredentials: true,
     })
+    // En plus de la requête vers l'api avec axios il faut
+    // supp le cookie en front avec la lib js-cookie pr être sur
       .then(() => removeCookie("jwt"))
       .catch((err) => console.log(err));
-    
+    // Pr réactualiser la recherche de cookie
     window.location = "/";
   };
 
