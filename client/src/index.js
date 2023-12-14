@@ -14,6 +14,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 const store = createStore(
   rootReducer,
+//   Logger pr afficher les infos du reducer dans la console
   composeWithDevTools(applyMiddleware(thunk, logger))
 );
 
@@ -21,12 +22,8 @@ const store = createStore(
 // store.dispatch(getPosts());
 
 ReactDOM.render(
-//   <React.StrictMode>
-//     <BrowserRouter>
       <Provider store={store}>
         <App />
       </Provider>,
-    {/* </BrowserRouter>
-  </React.StrictMode>, */},
   document.getElementById('root')
 );
