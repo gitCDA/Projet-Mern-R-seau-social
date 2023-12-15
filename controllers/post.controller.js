@@ -7,11 +7,13 @@ const fs = require("fs");
 const { promisify } = require("util");
 const pipeline = promisify(require("stream").pipeline);
 
-module.exports.readPost = (req, res) => {
-  PostModel.find((err, docs) => {
-    if (!err) res.send(docs);
-    else console.log("Error to get data : " + err);
-  }).sort({ createdAt: -1 });
+module.exports.readPost = async (req, res) => {
+  try {
+    const docs = await PostModel.find().sort({ createdAt: -1 })
+    res.status(201).send(docs)
+  } catch (err) {
+    return console.log("Error to get data : " + err);
+  }
 };
 
 module.exports.createPost = async (req, res) => {

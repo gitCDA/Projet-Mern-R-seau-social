@@ -22,7 +22,9 @@ const FollowHandler = ({ idToFollow, type }) => {
     if (!isEmpty(userData.following)) {
       if (userData.following.includes(idToFollow)) {
         setIsFollowed(true);
-      } else setIsFollowed(false);
+      }
+      else
+        setIsFollowed(false);
     }
   }, [userData, idToFollow]);
 
@@ -31,13 +33,13 @@ const FollowHandler = ({ idToFollow, type }) => {
       {isFollowed && !isEmpty(userData) && (
         <span onClick={handleUnfollow}>
           {type === "suggestion" && <button className="unfollow-btn">Abonné</button>}
-          {type === "card" && <img src="./img/icons/checked.svg" alt="checked"/>}
+          {type === "card" && <img src="./img/icons/checked.svg" alt="checked" />}
         </span>
       )}
       {isFollowed === false && !isEmpty(userData) && (
         <span onClick={handleFollow}>
           {type === "suggestion" && <button className="follow-btn">Suivre</button>}
-          {type === "card" && <img src="./img/icons/check.svg" alt="check"/>}
+          {type === "card" && <img src="./img/icons/check.svg" alt="check" />}
         </span>
       )}
     </>
