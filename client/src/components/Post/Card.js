@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dateParser, isEmpty } from "../Utils";
-// import FollowHandler from "../Profil/FollowHandler";
-// import LikeButton from "./LikeButton";
-// import { updatePost } from "../../actions/post.actions";
-// import DeleteCard from "./DeleteCard";
-// import CardComments from "./CardComments";
+import FollowHandler from "../Profil/FollowHandler";
+import LikeButton from "./LikeButton";
+import { updatePost } from "../../actions/post.actions";
+import DeleteCard from "./DeleteCard";
+import CardComments from "./CardComments";
 
 const Card = ({ post }) => {
   const [isLoading, setIsLoading] = useState(true);
-  // const [isUpdated, setIsUpdated] = useState(false);
-  // const [textUpdate, setTextUpdate] = useState(null);
-  // const [showComments, setShowComments] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
+  const [textUpdate, setTextUpdate] = useState(null);
+  const [showComments, setShowComments] = useState(false);
   const usersData = useSelector((state) => state.usersReducer);
   const userData = useSelector((state) => state.userReducer);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const updateItem = () => {
-  //   if (textUpdate) {
-  //     dispatch(updatePost(post._id, textUpdate));
-  //   }
-  //   setIsUpdated(false);
-  // };
+  const updateItem = () => {
+    if (textUpdate) {
+      dispatch(updatePost(post._id, textUpdate));
+    }
+    setIsUpdated(false);
+  };
 
   useEffect(() => {
     !isEmpty(usersData[0]) && setIsLoading(false);
@@ -36,8 +36,7 @@ const Card = ({ post }) => {
           <div className="card-left">
             <img
               src={
-                !isEmpty(usersData[0]) &&
-                usersData
+                !isEmpty(usersData[0]) && usersData
                   .map((user) => {
                     if (user._id === post.posterId)
                       return user.picture;
@@ -48,19 +47,19 @@ const Card = ({ post }) => {
               alt="poster-pic"
             />
           </div>
-          {/* <div className="card-right">
-            <div className="card-header">
-              <div className="pseudo">
-                <h3>
-                  {!isEmpty(usersData[0]) &&
-                    usersData
-                      .map((user) => {
-                        if (user._id === post.posterId)
-                          return user.pseudo;
-                        else return null;
-                      })
-                      .join("")}
-                </h3>
+          <div className="card-header">
+            <div className="pseudo">
+              <h3>
+                {!isEmpty(usersData[0]) &&
+                  usersData
+                    .map((user) => {
+                      if (user._id === post.posterId)
+                        return user.pseudo;
+                      else return null;
+                    })
+                    .join("")}
+              </h3>
+              <div className="card-right">
                 {post.posterId !== userData._id && (
                   <FollowHandler idToFollow={post.posterId} type={"card"} />
                 )}
@@ -89,7 +88,7 @@ const Card = ({ post }) => {
                 width="500"
                 height="300"
                 src={post.video}
-                frameBorder="0"
+                // frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 title={post._id}
@@ -116,7 +115,7 @@ const Card = ({ post }) => {
               <img src="./img/icons/share.svg" alt="share" />
             </div>
             {showComments && <CardComments post={post} />}
-          </div> */}
+          </div>
         </>
       )}
     </li>

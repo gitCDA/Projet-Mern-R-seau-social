@@ -45,32 +45,32 @@
     }
   }
 
-  .card-right {
+  .card-header {
     @media screen and(max-width: 590px) {
       margin-left: 18px;
     }
-    .card-header {
+    .pseudo {
       display: flex;
-      justify-content: space-between;
-      margin: 2px 0 4px;
-      min-height: 35px;
 
       @media screen and(max-width: 590px) {
-        margin: 12px 0 14px;
+        margin-left: 52px;
       }
-
       @media screen and(max-width: 440px) {
-        flex-direction: column;
+        transform: translateY(-18px);
       }
 
-      .pseudo {
+      .card-right {
         display: flex;
+        justify-content: space-between;
+        margin: 2px 0 4px;
+        min-height: 35px;
 
         @media screen and(max-width: 590px) {
-          margin-left: 52px;
+          margin: 12px 0 14px;
         }
+
         @media screen and(max-width: 440px) {
-          transform: translateY(-18px);
+          flex-direction: column;
         }
 
         span {
